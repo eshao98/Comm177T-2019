@@ -16,5 +16,5 @@ def deploy(c, source):
 	# c.run("aws s3 mv ~/Comm177T-2019/_site/" + source + " s3://comm177t-2019-eshao98")
 
 @task
-def cachebust(c, dist_id):
+def cachebust(c, dist_id): # dist_id takes in the distribution ID from S3.
 	c.run("aws cloudfront create-invalidation --distribution-id " + dist_id + " --paths '/*'")
