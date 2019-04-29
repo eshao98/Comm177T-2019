@@ -77,8 +77,14 @@ h1 {
   top: 50px;
 }
 
-p {
-  margin: 75px 0;
+h2 {
+  color: #dbf1f2;
+  font: 90px "Salernomi J", serif;
+  letter-spacing: -.03em;
+  line-height: 1em;
+  left: 100px;
+  postiion: absolute;
+  top: 50px;  
 }
 
 a {
@@ -104,7 +110,7 @@ a:hover, a:focus {
   overflow-y: scroll;
 }
 
-.container {
+.contentcontainer {
   position: relative;
   display: block;
   background-color: #882042;
@@ -112,16 +118,20 @@ a:hover, a:focus {
 }
 
 .content {
-  max-width: 750;
+  max-width: 750px;
   margin: 0 auto;
   padding: 75px 0;
+}
+
+p {
+  margin: 75px 0;
 }
 
 .parallax {
   display: flex;
   flex: 1 0 auto;
   position: relative;
-  z-index: 1;
+  z-index: -1;
   height: 100vh;
   width: 100vw;
   transform: translateZ(-1px) scale(2);
