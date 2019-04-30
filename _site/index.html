@@ -19,18 +19,6 @@
 
   <head>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script>
-function scrollToAnchor(aid){
-    var aTag = $("a[name='"+ aid +"']");
-    $('html,body').animate({scrollTop: aTag.offset().top},'slow');
-}
-
-$("#link").click(function() {
-   scrollToAnchor('id3');
-});
-</script>
-
     <meta charset="utf-8">
     <title>elena.</title>
     <link rel="stylesheet" href="assets/stylesheets/main.css">
@@ -43,7 +31,7 @@ $("#link").click(function() {
   	<div class="navigation">
   		<h3>
   			<a href="/">home</a><br>
-  			<a href="#intro" class="scroll-link">intro</a><br>
+  			<a href="#intro">intro</a><br>
   			<a href="/">works</a><br>
   		</h3>
   	</div>
@@ -69,10 +57,10 @@ $("#link").click(function() {
   		</div>
 
   		<div class="intro-container">
-  			<div class="intro-content">
-  				<h2 id="intro">
+  			<div class="intro-content" id="intro">
+  				<h5>
   					I’ve written pieces on the <a href="">graduate student (un)affordability crisis</a> and <a href="">union workers' rights</a> on campus, investigated <a href="">faculty connections to the Chinese scientist who gene-edited babies</a>, and reported on the <a href="">admissions cheating scandal</a>. 
-  				</h2>
+  				</h5>
   			</div>
   		</div>
 
