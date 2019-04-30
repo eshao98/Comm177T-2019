@@ -98,7 +98,6 @@ h1 {
   letter-spacing: -.03em;
   line-height: 0.8em;
   left: 100px;
-  postiion: absolute;
   top: 50px;
 }
 
@@ -108,8 +107,18 @@ h2 {
   letter-spacing: -.03em;
   line-height: 1em;
   left: 100px;
-  postiion: absolute;
   top: 50px;  
+}
+
+h3 {
+  color: var(--light-blue);
+  font: 900 50px "Libre Franklin";
+  letter-spacing: 0em;
+  line-height: 1em;
+}
+
+p {
+  margin: 75px 0;
 }
 
 h1 > a {
@@ -142,17 +151,31 @@ h2 > a:hover, a:focus {
   background-size: 100% 15px;
 }
 
-p {
-  margin: 75px 0;
+h3 > a {
+  color: currentColor;
+  text-decoration: none;
+}
+
+h3 > a:hover, a:focus {
+  color: var(--red);
+}
+
+.grid-container {
+  display: grid;
+  grid-template: repeat(3, [row] minmax(120px, 1fr)) / repeat(4, [col] 1fr);
+  grid-column-gap: 20px;
 }
 
 .navigation {
+  grid-column: col 4;
+  grid-row: row 1 / span 3;
   text-align: right;
   position: fixed;
   z-index: 999;
   top: 0;
   width: 100%;
-  padding-right: 100px;
+  padding-right: 50px;
+  padding-top: 50px;
 }
 
 .wrapper {
@@ -161,19 +184,6 @@ p {
   height: 100vh;
   overflow-x: hidden;
   overflow-y: scroll;
-}
-
-.content-container {
-  position: relative;
-  display: flex;
-  background-color: var(--dark-red);
-  z-index: 1;
-}
-
-.content {
-  max-width: 750px;
-  margin: 0 auto;
-  padding: 75px 0;
 }
 
 .home-container {
@@ -189,6 +199,19 @@ p {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.content-container {
+  position: relative;
+  display: flex;
+  background-color: var(--dark-red);
+  z-index: 1;
+}
+
+.content {
+  max-width: 750px;
+  margin: 0 auto;
+  padding: 75px 0;
 }
 
 
