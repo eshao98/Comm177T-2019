@@ -93,11 +93,10 @@ html, body {
 }
 
 h1 {
-  color: var(--pale-yellow);
-  font: 200px "Salernomi J", serif;
+  color: var(--light-blue);
+  font: 150px "Salernomi J", serif;
   letter-spacing: -.03em;
   line-height: 0.8em;
-  left: 100px;
   top: 50px;
 }
 
@@ -106,13 +105,19 @@ h2 {
   font: 90px "Salernomi J", serif;
   letter-spacing: -.03em;
   line-height: 1em;
-  left: 100px;
   top: 50px;  
 }
 
 h3 {
   color: var(--light-blue);
   font: 900 50px "Libre Franklin";
+  letter-spacing: 0em;
+  line-height: 1em;
+}
+
+h4 {
+  color: var(--light-blue);
+  font: 900 30px "Libre Franklin";
   letter-spacing: 0em;
   line-height: 1em;
 }
@@ -140,7 +145,7 @@ h2 > a {
   position: relative;
   color: var(--light-blue);
   text-decoration: none;
-  background-image: linear-gradient(#cd5555, #cd5555);
+  background-image: linear-gradient(#efedbb, #efedbb);
   background-position: 0% 100%;
   background-repeat: no-repeat;
   background-size: 0% 15px;
@@ -157,70 +162,83 @@ h3 > a {
 }
 
 h3 > a:hover, a:focus {
-  color: var(--red);
+  color: var(--pale-yellow);
 }
 
-.grid-container {
+h4 > a {
+  color: currentColor;
+  text-decoration: none;
+}
+
+h4 > a:hover, a:focus {
+  color: var(--pale-yellow);
+}
+
+
+.wrapper {
+  /* CSS Grid
   display: grid;
   grid-template: repeat(3, [row] minmax(120px, 1fr)) / repeat(4, [col] 1fr);
-  grid-column-gap: 20px;
+  grid-column-gap: 0%;
+  */
+  height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  perspective: 1px;
+  transform-style: preserve-3d;
 }
 
 .navigation {
-  grid-column: col 4;
-  grid-row: row 1 / span 3;
   text-align: right;
   position: fixed;
   z-index: 999;
   top: 0;
   width: 100%;
-  padding-right: 50px;
-  padding-top: 50px;
+  padding-right: 100px;
+  padding-top: 70px;
 }
 
-.wrapper {
-  perspective: 1px;
-  transform-style: preserve-3d;
-  height: 100vh;
-  overflow-x: hidden;
-  overflow-y: scroll;
-}
-
-.home-container {
-  display: flex;
-  flex: 1 0 auto;
+.parallax {
   position: relative;
   z-index: -1;
   height: 100vh;
   width: 100vw;
+  /* fixed background scrolling effect */
   transform: translateZ(-1px) scale(2);
-  background-color: var(--red);
+  background-color: var(--dark-red);
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-.content-container {
+.intro-container {
   position: relative;
-  display: flex;
-  background-color: var(--dark-red);
+  display: block;
+  background-color: var(--red);
   z-index: 1;
 }
 
-.content {
-  max-width: 750px;
-  margin: 0 auto;
-  padding: 75px 0;
+.works-container {
+  position: relative;
+  display: block;
+  background-color: var(--red);
+  z-index: 1;
 }
 
+.intro-content {
+  margin: 0 1000px auto 200px;
+  padding: 500px 0;
+}
+
+.title {
+  margin: 0 auto auto 200px;
+  padding: 400px 0;
+}
 
 /*
-  Fixing parallax effect for mobile devices and tablets.
-*/
-
-/*
-  Media queries for responsive design
+  Still working on the media queries for responsive design
 
 @media screen and (max-width: 1025px) {
   .parallax {
