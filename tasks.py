@@ -16,4 +16,4 @@ def deploy(c):
 
 @task
 def cachebust(c):
-	c.run("aws cloudfront create-invalidation --distribution-id --paths '/*'")
+	c.run("aws cloudfront create-invalidation --distribution-id E2T7YVIR972TS3 --paths '/*'")
