@@ -135,6 +135,14 @@ h5 {
   top: 50px;  
 }
 
+h6 {
+  color: var(--light-blue);
+  font: 50px "Salernomi J", serif;
+  letter-spacing: -.03em;
+  line-height: 1em;
+  top: 50px;  
+}
+
 p {
   margin: 75px 0;
 }
@@ -269,7 +277,7 @@ h5 > a:hover:after {
 .works-container {
   position: relative;
   display: block;
-  background-color: var(--pink);
+  background-color: var(--dark-red);
   z-index: 1;
 }
 
@@ -279,7 +287,7 @@ h5 > a:hover:after {
 }
 
 .works-content {
-  margin: 0 1000px auto 200px;
+  margin: 0 1000px auto 100px;
   padding: 500px 0;
 }
 
@@ -316,16 +324,17 @@ h5 > a:hover:after {
 .box-a {
   background-color: var(--light-pink);
   color: #fff;
-  font-size: 0px;
+  font: 900 80px "Libre Franklin";
   height: 300px;
   grid-area: a;
   position: relative;
+  padding: 10px;
 }
 
 .box-a:hover {
   background-color: var(--pink);
   color: white;
-  font: 900 30px "Libre Franklin";
+  font: 900 0px "Libre Franklin";
   letter-spacing: 0em;
   line-height: 1em;
 }
@@ -333,16 +342,17 @@ h5 > a:hover:after {
 .box-b {
   background-color: var(--pale-yellow);
   color: #fff;
-  font-size: 0px;
+  font: 900 80px "Libre Franklin";
   height: 300px;
   grid-area: b;
   position: relative;
+  padding: 10px;
 }
 
 .box-b:hover {
   background-color: var(--dark-yellow);
   color: white;
-  font: 900 30px "Libre Franklin";
+  font: 900 0px "Libre Franklin";
   letter-spacing: 0em;
   line-height: 1em;
 }
@@ -350,16 +360,17 @@ h5 > a:hover:after {
 .box-c {
   background-color: var(--dark-pink);
   color: #fff;
-  font-size: 0px;
+  font: 900 80px "Libre Franklin";
   height: 300px;
   grid-area: c;
   position: relative;
+  padding: 10px;
 }
 
 .box-c:hover {
   background-color: var(--dark-red);
   color: white;
-  font: 900 30px "Libre Franklin";
+  font: 900 0px "Libre Franklin";
   letter-spacing: 0em;
   line-height: 1em;
 }
