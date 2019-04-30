@@ -51,6 +51,31 @@ table {
 }
 
 /*
+  Prepping the Grid for different browsers.
+*/
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+/*
+  Setting root values/variables.
+  Usage: 
+  var(--dark-red)
+*/
+
+:root {
+  --dark-red: #882042;
+  --red: #cd5555;
+  --pale-yellow: #efedbb;
+  --light-blue: #dbf1f2;
+}
+
+/*
   Parallax scrolling for home page.
 */
 
@@ -62,14 +87,14 @@ table {
 }
 
 html, body {
-  color: #dbf1f2;
+  color: var(--light-blue);
   font: 400 30px "Libre Franklin";
   scroll-behavior: smooth;
 }
 
 h1 {
-  color: #dbf1f2;
-  font: 500px "Salernomi J", serif;
+  color: var(--pale-yellow);
+  font: 200px "Salernomi J", serif;
   letter-spacing: -.03em;
   line-height: 0.8em;
   left: 100px;
@@ -78,7 +103,7 @@ h1 {
 }
 
 h2 {
-  color: #dbf1f2;
+  color: var(--light-blue);
   font: 90px "Salernomi J", serif;
   letter-spacing: -.03em;
   line-height: 1em;
@@ -87,19 +112,47 @@ h2 {
   top: 50px;  
 }
 
-a {
+h1 > a {
   position: relative;
-  color: #ffffff;
+  color: var(--pale-yellow);
   text-decoration: none;
-  background-image: linear-gradient(#882042, #882042);
+  background-image: linear-gradient(currentColor, currentColor);
   background-position: 0% 100%;
   background-repeat: no-repeat;
   background-size: 0% 100px;
-  transition: background-size .3s ease-in-out 0.2s;
+  transition: background-size 1s ease-in-out 0.2s;
 }
 
-a:hover, a:focus {
+h1 > a:hover, a:focus {
   background-size: 100% 100px;
+}
+
+h2 > a {
+  position: relative;
+  color: var(--light-blue);
+  text-decoration: none;
+  background-image: linear-gradient(#cd5555, #cd5555);
+  background-position: 0% 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 15px;
+  transition: background-size 1s ease-in-out 0.2s;
+}
+
+h2 > a:hover, a:focus {
+  background-size: 100% 15px;
+}
+
+p {
+  margin: 75px 0;
+}
+
+.navigation {
+  text-align: right;
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  width: 100%;
+  padding-right: 100px;
 }
 
 .wrapper {
@@ -110,10 +163,10 @@ a:hover, a:focus {
   overflow-y: scroll;
 }
 
-.contentcontainer {
+.content-container {
   position: relative;
-  display: block;
-  background-color: #882042;
+  display: flex;
+  background-color: var(--dark-red);
   z-index: 1;
 }
 
@@ -123,11 +176,7 @@ a:hover, a:focus {
   padding: 75px 0;
 }
 
-p {
-  margin: 75px 0;
-}
-
-.parallax {
+.home-container {
   display: flex;
   flex: 1 0 auto;
   position: relative;
@@ -135,7 +184,7 @@ p {
   height: 100vh;
   width: 100vw;
   transform: translateZ(-1px) scale(2);
-  background-color: #cd5555;
+  background-color: var(--red);
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -147,8 +196,12 @@ p {
   Fixing parallax effect for mobile devices and tablets.
 */
 
-@media screen and (max-width: 1030px) {
+/*
+  Media queries for responsive design
+
+@media screen and (max-width: 1025px) {
   .parallax {
     background-attachment: scroll;
   }
 }
+*/
