@@ -219,7 +219,6 @@ h5 > a:hover, a:focus {
   background-size: 100% 15px;
 }
 
-
 h5 > a:hover:after {
   display: block;
   position: absolute;
