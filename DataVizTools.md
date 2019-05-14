@@ -2,7 +2,7 @@
 Elena Shao  
 COMM 177T: Building News Applications
 
-Dataviz located [here](http://elenaling.com/executions/).
+Dataviz located [here](http://elenaling.com/stanford-contribs/).
 
 ### The Data Visualization
 
