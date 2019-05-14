@@ -14,11 +14,11 @@ Since I had worked a little with Flourish before, I decided to start with Datawr
 
 For simpler data visualizations, Datawrapper also seems to do a better job with its first shot at interpreting data. For example, with essentially no other input or direction besides uploading the data, Datawrapper was able to pretty much correctly map out the campaign contribution data:
 
-![dataviz2](https://github.com/eshao98/Comm177T-2019/blob/master/_site/executions/dataviz2.png)
+![dataviz2](https://github.com/eshao98/Comm177T-2019/blob/master/_site/stanford-contribs/dataviz2.png)
 
 While Flourish had trouble interpreting % to Democrats to be the same as # of Democrats, and double-counted those values, and even interpreted the "Total" column incorrectly:
 
-![dataviz1](https://github.com/eshao98/Comm177T-2019/blob/master/_site/executions/dataviz1.png)
+![dataviz1](https://github.com/eshao98/Comm177T-2019/blob/master/_site/stanford-contribs/dataviz1.png)
 
 Another aspect of Datawrapper that I preferred over Flourish was that they ask for your data first, and then give you options to cycle through different visualizations. When I opened Flourish to try and complete the same task, the site asked me to first choose the "type" of visualization I wanted first. This can be changed later, but even a subtle touch such as this actually makes a huge difference in ease of choosing the right visualization, especially when working with more obscure data that I may not have a concrete idea of what it should look like at the start. 
 
