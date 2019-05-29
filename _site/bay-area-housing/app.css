@@ -14,13 +14,8 @@ svg {
   display: block;
 }
 
-/* tooltip */
-div.tooltip {
-	position: absolute;
-	visibility: hidden;
-	font-size: 60%;
-	color: #333333;
-	background-color: #e6e6e6;
-	opacity: .95;
-	padding: 5px;
+path {
+	fill: #ccc;
+	stroke: #fff;
+	stroke-width: .5px;
 }
