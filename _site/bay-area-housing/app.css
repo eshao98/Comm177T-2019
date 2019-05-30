@@ -1,4 +1,9 @@
 
+#content {
+	margin: 5px;
+	padding: 20px;
+}
+
 body {
 	font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 	font-size: 15pt;
@@ -15,7 +20,26 @@ svg {
 }
 
 path {
-	fill: #ccc;
 	stroke: #fff;
-	stroke-width: .5px;
+	stroke-width: 1;
+	stroke-linejoin: round;
+}
+
+path:hover {
+	fill-opacity: 0.6;
+}
+
+.tooltip {
+	position: absolute;
+	padding: 7px;
+	font-size: 0.9em;
+	pointer-events: none;
+	background #fff;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
+
+.tooltip p {
+	margin: 0;
+	padding: 0;
 }

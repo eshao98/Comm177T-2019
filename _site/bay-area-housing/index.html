@@ -5,14 +5,19 @@
     <meta charset="utf-8">
     <title>Bay Area Housing</title>
     <link rel="stylesheet" type="text/css" href="app.css"/>
+
+    <script src="https://d3js.org/d3-queue.v2.min.js"></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://d3js.org/topojson.v2.min.js"></script>
+    
   </head>
 
   <body>
-    <h1>Bay Area Housing (In)Affordability</h1>
-    <svg></svg>
-    <script src="https://d3js.org/d3.v5.min.js"></script>
-    <script src="https://d3js.org/topojson.v2.min.js"></script>
-    <script src="https://d3js.org/d3-queue.v2.min.js"></script>
+    <div id="content">
+      <h1>Bay Area Housing (In)Affordability</h1>
+      <div id="map"></div>
+    </div>
+
     <script src="app.js" charset="utf-8"></script>
   </body>
 </html>
