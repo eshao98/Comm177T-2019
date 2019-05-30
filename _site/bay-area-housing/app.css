@@ -14,6 +14,12 @@ h1 {
   font-weight: 800;
 }
 
+h2.year {
+	margin: 10px 0px 0px 0px;
+	font-size: 1.3em;
+	font-weight: 700;
+}
+
 svg {
   margin: auto;
   display: block;
@@ -29,12 +35,18 @@ path:hover {
 	fill-opacity: 0.6;
 }
 
+input {
+	display: block;
+	width: 200px;
+	margin: 10px 0px 0px 0px;
+}
+
 .tooltip {
 	position: absolute;
 	padding: 7px;
 	font-size: 0.9em;
 	pointer-events: none;
-	background #fff;
+	background: #fff;
 	border: 1px solid #ccc;
 	border-radius: 4px;
 }
