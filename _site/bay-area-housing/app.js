@@ -17,129 +17,94 @@ var projection = d3.geoMercator()
 var path = d3.geoPath()
 	.projection(projection);
 
-// tooltip
-tooltip = d3.select("body")
-	.append("div")
-	.attr("class", "tooltip")
-	.style("opacity", 0);
-
-
-// legend
-var legendText = ["0", "25", "50", "75", "100"];
-var legendColors = ["#7a0177", "#c51b8a", "#f768a1", "#fbb4b9", "#feebe2"];
-
-
-// creating svg
 var svg = d3.select("#map")
 	.append("svg")
 	.attr("width", width)
 	.attr("height", height);
 
 // zoom function from D3 Cookbook
-
 var g = svg.append("g")
 	.call(d3.zoom()
-	.scaleExtent([1, 15])
+	.scaleExtent([1, 10])
 	.on("zoom", zoomHandler));
 
 function zoomHandler() { 
     var transform = d3.event.transform; 
     g.attr("transform", "translate(" + transform.x + "," + transform.y 
             + ")scale(" + transform.k + ")"); 
-} 
+}; 
 
+// tooltip
+tooltip = d3.select("body")
+	.append("div")
+	.attr("class", "tooltip")
+	.style("opacity", 0);
 
-// loading geojson data for Bay Area zips
+// map colors
+var color = d3.scaleThreshold()
+	.domain([10, 25, 50, 75, 100])
+	.range(["#7a0177", "#c51b8a", "#f768a1", "#fbb4b9", "#feebe2"]);
+
+// creates basic map from geojson
 d3.json("data/bay-area-zips.geojson").then(function(geojson) {
-
-	// reading in housing wage data
+		// reading in csv data
 	d3.csv("data/hwdata.csv").then(function(data) {
-		
 		data.forEach(function(d) { // iterate over data array to get numbers
-			d.year = +d.year;
-			d.zip = +d.zip;
-			d.onebr = +d.onebr;
-			d.twobr = +d.twobr;
-			d.threebr = +d.threebr;
-			d.fourbr = +d.fourbr;
-			d.onehw = +d.onehw;
-			d.twohw = +d.twohw;
-			d.threehw = +d.threehw;
-			d.fourhw = +d.fourhw;
+				d.year = +d.year;
+				d.zip = +d.zip;
+				d.onebr = +d.onebr;
+				d.twobr = +d.twobr;
+				d.threebr = +d.threebr;
+				d.fourbr = +d.fourbr;
+				d.onehw = +d.onehw;
+				d.twohw = +d.twohw;
+				d.threehw = +d.threehw;
+				d.fourhw = +d.fourhw;
 		});
+		initialData = data;
+		drawBase();
+		drawMap();
+	});
 
-		// console.log(data)
-		/*
-		TODO: Create a json object with mulltiple levels
-		of nesting
+	// drawing the base map
 
-		{ 2011: { 
-			94941: { <stuff> },
-			95932: { <stuff> }
-			}
-          2012: { etc. etc.}
-		}
-
-		*/
-		var dataByZipByYear = d3.nest()
-			.key(function(d) { return d.zip; })
-			.key(function(d) { return d.year; })
-			//.entries(data)
-			.map(data);
-		
-		console.log(data)
-
-		geojson.features.forEach(function(d) {
-			d.properties.years = dataByZipByYear[+d.properties.zip]
-		})
-
-
-		// map colors
-		var color = d3.scaleThreshold()
-			.domain([10, 25, 50, 75, 100])
-			.range(legendColors);
-
-		var zips = g.selectAll("path")
+	function drawBase() {
+		svg.selectAll("path")
 		.data(geojson.features)
 		.enter()
 		.append("path")
-		.attr("d", path)
-		.attr("class", "zip")
+			.attr("d", path)
+			.attr("class", "zip")
+	};
 
-		.on("mouseover", function(d) {
-			tooltip.transition()
-			.duration(200)
-			.style("opacity", 1)
-			.text("test")
-			.style("left", (d3.event.pageX + 15) + "px")
-			.style("top", (d3.event.pageY - 30) + "px");
-		})
-		
-		.on("mouseout", function(d) {
-			tooltip.transition()
-			.duration(200)
-			.style("opacity", 0);
-		})
+	function drawMap() {
+		d3.selectAll(".zip")
+		.remove();
 
-	function update(year){
-		slider.property("value", year);
-		d3.select(".year").text(year);
-		zips.style("fill", function(d) {
-			return color(50) // FILL THIS IN
+		var selectedYear = document.getElementById("menu").value;
+		var filteredData = initialData.filter(function(d){ return d.year == selectedYear; });
+
+		var zips = svg.selectAll(".zip")
+			.data(geojson.features)
+			//.data(filteredData)
+			.enter()
+			.append("path")
+				.attr("d", path)
+				.attr("class", "zip");
+
+		zips
+		.data(filteredData)
+		.style("fill", function(filteredData) {
+			return color(filteredData.twohw)
 		});
-	}
 
-	var slider = d3.select(".slider")
-		.append("input")
-			.attr("type", "range")
-			.attr("min", 2011)
-			.attr("max", 2019)
-			.attr("step", 1)
-		.on("input", function() {
-			var year = this.value;
-			update(year);
-		});
-		update(2011);
+		d3.select(".year").text(selectedYear);
+
+		};
+
+	d3.select("#menu")
+	.on("input", function() {
+		drawMap();
 	});
 
 });
