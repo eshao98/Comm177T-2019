@@ -4,7 +4,10 @@ var width = 800,
 	scale = 60000, 
 	// centered on SF (approximately)
 	latitude = 37.7750,
-	longitude = -122.4183;
+	longitude = -122.4183
+	lowColor = "#edf8b1"
+	highColor = "#c51b8a"
+	rate = "twohw"; // rate you want to test
 
 // set up map projection, position map
 var projection = d3.geoMercator()
@@ -22,18 +25,6 @@ var svg = d3.select("#map")
 	.attr("width", width)
 	.attr("height", height);
 
-// zoom function from D3 Cookbook
-var g = svg.append("g")
-	.call(d3.zoom()
-	.scaleExtent([1, 10])
-	.on("zoom", zoomHandler));
-
-function zoomHandler() { 
-    var transform = d3.event.transform; 
-    g.attr("transform", "translate(" + transform.x + "," + transform.y 
-            + ")scale(" + transform.k + ")"); 
-}; 
-
 // tooltip
 tooltip = d3.select("body")
 	.append("div")
@@ -41,9 +32,9 @@ tooltip = d3.select("body")
 	.style("opacity", 0);
 
 // map colors
-var color = d3.scaleThreshold()
-	.domain([10, 25, 50, 75, 100])
-	.range(["#7a0177", "#c51b8a", "#f768a1", "#fbb4b9", "#feebe2"]);
+var color = d3.scaleLinear()
+	.domain([10, 100])
+	.range([lowColor, highColor]);
 
 // creates basic map from geojson
 d3.json("data/bay-area-zips.geojson").then(function(geojson) {
@@ -92,14 +83,28 @@ d3.json("data/bay-area-zips.geojson").then(function(geojson) {
 				.attr("d", path)
 				.attr("class", "zip");
 
+		// updates colors and tooltip
 		zips
 		.data(filteredData)
 		.style("fill", function(filteredData) {
-			return color(filteredData.twohw)
+			return color(filteredData[rate])
+		})
+
+		.on("mouseover", function(d) {
+			tooltip.transition()
+			.duration(200)
+			.style("opacity", 1)
+			.text("test")
+			.style("left", (d3.event.pageX - 20) + "px")
+			.style("top", (d3.event.pageY + 20) + "px");
+		})
+		.on("mouseout", function(d) {
+			tooltip.transition()
+			.duration(200)
+			.style("opacity", 0);
 		});
 
 		d3.select(".year").text(selectedYear);
-
 		};
 
 	d3.select("#menu")
