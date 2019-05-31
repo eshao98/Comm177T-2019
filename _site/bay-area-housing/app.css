@@ -1,12 +1,17 @@
 
+body {
+	font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+	font-size: 15pt;
+}
+
 #content {
 	margin: 5px;
 	padding: 20px;
 }
 
-body {
-	font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-	font-size: 15pt;
+#map {
+	margin: 10px 0px 0px 0px;
+	padding: 0px;
 }
 
 h1 {
@@ -20,25 +25,30 @@ h2.year {
 	font-weight: 700;
 }
 
+p {
+	margin: 10px 0px 0px 0px;
+}
+
 svg {
   margin: auto;
   display: block;
 }
 
-path {
-	stroke: #fff;
-	stroke-width: 1;
-	stroke-linejoin: round;
-}
-
-path:hover {
-	fill-opacity: 0.6;
-}
 
 input {
 	display: block;
 	width: 200px;
 	margin: 10px 0px 0px 0px;
+}
+
+.zip {
+	stroke: #fff;
+	stroke-width: 1;
+	stroke-linejoin: round;
+}
+
+.zip:hover {
+	fill-opacity: 0.6;
 }
 
 .tooltip {

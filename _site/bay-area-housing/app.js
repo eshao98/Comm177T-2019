@@ -53,22 +53,22 @@ function zoomHandler() {
 d3.json("data/bay-area-zips.geojson").then(function(geojson) {
 
 	// reading in housing wage data
-	d3.csv("data/data.csv").then(function(data) {
+	d3.csv("data/hwdata.csv").then(function(data) {
 		
 		data.forEach(function(d) { // iterate over data array to get numbers
 			d.year = +d.year;
 			d.zip = +d.zip;
-			d["1br"] = +d["1br"];
-			d["2br"] = +d["2br"];
-			d["3br"] = +d["3br"];
-			d["4br"] = +d["4br"];
-			d["1br-hw"] = +d["1br-hw"];
-			d["2br-hw"] = +d["2br-hw"];
-			d["3br-hw"] = +d["3br-hw"];
-			d["4br-hw"] = +d["4br-hw"];
-			d.county = d.county;
-			d.city = d.city;
+			d.onebr = +d.onebr;
+			d.twobr = +d.twobr;
+			d.threebr = +d.threebr;
+			d.fourbr = +d.fourbr;
+			d.onehw = +d.onehw;
+			d.twohw = +d.twohw;
+			d.threehw = +d.threehw;
+			d.fourhw = +d.fourhw;
 		});
+
+		// console.log(data)
 		/*
 		TODO: Create a json object with mulltiple levels
 		of nesting
@@ -84,10 +84,15 @@ d3.json("data/bay-area-zips.geojson").then(function(geojson) {
 		var dataByZipByYear = d3.nest()
 			.key(function(d) { return d.zip; })
 			.key(function(d) { return d.year; })
-			.entries(data);
-			//.map(data);
+			//.entries(data)
+			.map(data);
 		
-		console.log(dataByZipByYear);
+		console.log(data)
+
+		geojson.features.forEach(function(d) {
+			d.properties.years = dataByZipByYear[+d.properties.zip]
+		})
+
 
 		// map colors
 		var color = d3.scaleThreshold()
@@ -99,6 +104,7 @@ d3.json("data/bay-area-zips.geojson").then(function(geojson) {
 		.enter()
 		.append("path")
 		.attr("d", path)
+		.attr("class", "zip")
 
 		.on("mouseover", function(d) {
 			tooltip.transition()
@@ -108,6 +114,7 @@ d3.json("data/bay-area-zips.geojson").then(function(geojson) {
 			.style("left", (d3.event.pageX + 15) + "px")
 			.style("top", (d3.event.pageY - 30) + "px");
 		})
+		
 		.on("mouseout", function(d) {
 			tooltip.transition()
 			.duration(200)
@@ -117,22 +124,21 @@ d3.json("data/bay-area-zips.geojson").then(function(geojson) {
 	function update(year){
 		slider.property("value", year);
 		d3.select(".year").text(year);
-		//zips.style("fill", function(d) {
-		//	console.log(d.properties.years[year]) // FILL THIS IN
-		//});
+		zips.style("fill", function(d) {
+			return color(50) // FILL THIS IN
+		});
 	}
 
 	var slider = d3.select(".slider")
 		.append("input")
-		.attr("type", "range")
-		.attr("min", 2011)
-		.attr("max", 2019)
-		.attr("step", 1)
+			.attr("type", "range")
+			.attr("min", 2011)
+			.attr("max", 2019)
+			.attr("step", 1)
 		.on("input", function() {
 			var year = this.value;
 			update(year);
 		});
-
 		update(2011);
 	});
 
