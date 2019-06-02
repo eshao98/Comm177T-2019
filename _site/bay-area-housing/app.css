@@ -73,3 +73,11 @@ input {
 	top: 500px;
 	z-index: 2;
 }
+
+#line {
+	display: inline-block;
+}
+
+#bar {
+	display: inline-block;
+}
