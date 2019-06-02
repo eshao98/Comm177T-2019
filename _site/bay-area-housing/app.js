@@ -1,14 +1,14 @@
 // map viewport dimensions
-var width = 800,
-	height = 600,
-	scale = 60000, 
+var width = 900,
+	height = 700,
+	scale = 50000, 
 	// centered on SF (approximately)
-	latitude = 37.7750,
-	longitude = -122.4183
-	lowColor = "#edf8b1"
-	highColor = "#c51b8a"
-	rate = "twohw" // rate you want to test
-	minVal = d3.format("$,")(0)
+	latitude = 37.7347,
+	longitude = -122.2455,
+	lowColor = "#edf8b1",
+	highColor = "#c51b8a",
+	rate = "twohw", // rate you want to test
+	minVal = d3.format("$,")(0),
 	maxVal = d3.format("$,")(100);
 
 // set up map projection, position map
@@ -60,7 +60,6 @@ legend.append("stop")
 	.attr("offset", "0%")
 	.attr("stop-color", highColor)
 	.attr("stop-opacity", 1);
-
 legend.append("stop")
 	.attr("offset", "100%")
 	.attr("stop-color", lowColor)
@@ -89,7 +88,7 @@ key.append("g")
 // creates basic map from geojson
 d3.json("data/bay-area-zips.geojson").then(function(geojson) {
 		// reading in csv data
-	d3.csv("data/hwdata.csv").then(function(data) {
+	d3.csv("data/data.csv").then(function(data) {
 		data.forEach(function(d) { // iterate over data array to get numbers
 				d.year = +d.year;
 				d.zip = +d.zip;
@@ -101,37 +100,56 @@ d3.json("data/bay-area-zips.geojson").then(function(geojson) {
 				d.twohw = +d.twohw;
 				d.threehw = +d.threehw;
 				d.fourhw = +d.fourhw;
+				d.vlrhna = +d.vlrhna;
+				d.vltotal = +d.vltotal;
+				d.vlpercent = +d.vlpercent.slice(0, -1);
+				d.lowrhna = +d.lowrhna;
+				d.lowtotal = +d.lowtotal;
+				d.lowpercent = +d.lowpercent.slice(0, -1);
+				d.modrhna = +d.modrhna;
+				d.modtotal = +d.modtotal;
+				d.modpercent = +d.modpercent.slice(0, -1);
+				d.aboverhna = +d.aboverhna;
+				d.abovetotal = +d.abovetotal;
+				d.abovepercent = +d.abovepercent.slice(0, -1);
+				d.totalrhna = +d.totalrhna;
+				d.totaltotal = +d.totaltotal;
+				d.totalpercent = +d.totalpercent.slice(0, -1);
+				
 		});
+		//console.log(data)
 		initialData = data;
 		drawBase();
 		drawMap();
 	});
 
-	// drawing the base map
-
+	// drawing the base map with no colors (prep for case if zip code has no data)
 	function drawBase() {
 		svg.selectAll("path")
 		.data(geojson.features)
 		.enter()
 		.append("path")
 			.attr("d", path)
-			.attr("class", "zip")
+			.attr("stroke", "#fff")
+			.attr("stroke-width", "1")
+			//.attr("class", "zip")
+			.attr("fill", "#f6f6f6")
 	};
 
 	function drawMap() {
 		d3.selectAll(".zip")
-		.remove();
+		.remove(); // clears prev year data
 
 		var selectedYear = document.getElementById("menu").value;
 		var filteredData = initialData.filter(function(d){ return d.year == selectedYear; });
-
 		var zips = svg.selectAll(".zip")
 			.data(geojson.features)
 			//.data(filteredData)
 			.enter()
 			.append("path")
 				.attr("d", path)
-				.attr("class", "zip");
+				.attr("class", "zip")
+				.attr("fill", "#f6f6f6");
 
 		// updates colors and tooltip
 		zips
