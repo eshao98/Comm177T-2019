@@ -75,14 +75,14 @@ var y = d3.scaleLinear()
 	.range([h, 0])
 	.domain([0, 100]);
 
-var yAxis = d3.axisLeft(y)
+var yAxisMap = d3.axisLeft(y)
 	.scale(y)
 	.ticks(5);
 
 key.append("g")
-	.attr("class", "y axis")
+	//.attr("class", "y axis")
 	.attr("transform", "translate(25,10)")
-	.call(yAxis);
+	.call(yAxisMap);
 
 
 // creates basic map from geojson

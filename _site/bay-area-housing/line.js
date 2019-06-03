@@ -1,6 +1,6 @@
 
-var margin = {top: 20, right: 75, bottom: 30, left: 30},
-	width = 700 - margin.left - margin.right,
+var margin = {top: 20, right: 75, bottom: 30, left: 40},
+	width = 800 - margin.left - margin.right,
 	height = 400 - margin.top - margin.bottom,
 	// set the ranges
 	xScale = d3.scaleTime().range([0, width]),
@@ -17,7 +17,7 @@ var hwData,
 var line = d3.line()
 	.x(function(d) { return xScale(d.year); })
 	.y(function(d) { return yScale(d.wage); })
-	.curve(d3.curveLinear);
+	.curve(d3.curveBasis);
 
 var linesvg = d3.select("#line")
 	.append("svg")
@@ -45,10 +45,6 @@ var select = d3.select("#select")
 
 d3.csv("data/hw-by-city.csv").then(function(csv) {
 	hwData = csv;
-
-	hwData.forEach(function(d) {
-		d.year = +d.year;
-	});
 	update();
 });
 
@@ -109,7 +105,7 @@ function update() {
 		.attr("dy", ".35em")
 		.text(function(d) { return d.name; });
 
-    var citiesUpdate = d3.transition(cities);
+    var citiesUpdate = d3.selectAll(".city").transition(cities);
 
 	citiesUpdate.select("path")
 		.attr("d", function(d) { return line(d.values); });
@@ -152,5 +148,3 @@ function update() {
 		.style("stroke", "#3498DB");
 */
 }
-
-d3.select(self.frameElement).style("height", "625px");
