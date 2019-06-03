@@ -74,10 +74,71 @@ input {
 	z-index: 2;
 }
 
+
 #line {
 	display: inline-block;
+	margin: 0px;
+	padding: 0px;
 }
 
-#bar {
-	display: inline-block;
+#slider {
+	margin: 5px 0px 0px 0px;
+	padding: 0px;
+	display: block;
+}
+
+#select {
+	margin: 5px 0px 0px 0px;
+	padding: 0px;
+	display: block;
+}
+
+.axis path,, .axis line {
+	fill: none;
+	stroke: #ccc;
+	shape-rendering: crispEdges;
+	border-width: 2px;
+}
+
+.axis line {
+	stroke: #eee;
+	stroke-width: 1;
+	shape-rendering: crispEdges;
+}
+
+.domain {
+	stroke-width: 1px;
+}
+
+path.line {
+	fill: none;
+	stroke-width: 1.5px;
+}
+
+.x.axis .tick text, .y.axis .tick text, .city text {
+  color: #333;
+  font-size: 0.9em;
+  padding: 5px;
+}
+
+.g-baseline line {
+  stroke: #333;
+  stroke-width: 2;
+  shape-rendering: crispEdges;
+}
+
+.city text {
+  display: none;
+}
+
+.city:hover text {
+  display: block;
+}
+
+.city .line {
+  opacity: 0.4;
+}
+
+.city .line:hover {
+  opacity: 1;
 }

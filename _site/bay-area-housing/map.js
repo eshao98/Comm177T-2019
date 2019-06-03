@@ -22,7 +22,7 @@ var projection = d3.geoMercator()
 var path = d3.geoPath()
 	.projection(projection);
 
-var svg = d3.select("#map")
+var map = d3.select("#map")
 	.append("svg")
 	.attr("width", wMap)
 	.attr("height", hMap);
@@ -125,7 +125,7 @@ d3.json("data/bay-area-zips.geojson").then(function(geojson) {
 
 	// drawing the base map with no colors (prep for case if zip code has no data)
 	function drawBase() {
-		svg.selectAll("path")
+		map.selectAll("path")
 		.data(geojson.features)
 		.enter()
 		.append("path")
@@ -140,9 +140,9 @@ d3.json("data/bay-area-zips.geojson").then(function(geojson) {
 		d3.selectAll(".zip")
 		.remove(); // clears prev year data
 
-		var selectedYear = document.getElementById("menu").value;
+		var selectedYear = document.getElementById("slider").value;
 		var filteredData = initialData.filter(function(d){ return d.year == selectedYear; });
-		var zips = svg.selectAll(".zip")
+		var zips = map.selectAll(".zip")
 			.data(geojson.features)
 			//.data(filteredData)
 			.enter()
@@ -180,7 +180,7 @@ d3.json("data/bay-area-zips.geojson").then(function(geojson) {
 		d3.select(".year").text(selectedYear);
 		};
 
-	d3.select("#menu")
+	d3.select("#slider")
 	.on("input", function() {
 		drawMap();
 
