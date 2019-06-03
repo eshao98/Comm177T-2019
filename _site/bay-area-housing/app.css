@@ -141,4 +141,5 @@ path.line {
 
 .city .line:hover {
   opacity: 1;
+  stroke: #ee7777;
 }

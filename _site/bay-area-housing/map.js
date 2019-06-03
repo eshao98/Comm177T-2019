@@ -147,7 +147,17 @@ d3.json("data/bay-area-zips.geojson").then(function(geojson) {
 			.key(function(d) { return d.year; })
 			.map(initialData);
 
+		console.log(nested)
+
 		var filteredData = nested['$'+selectedYear]
+
+		console.log(filteredData)
+
+		/*
+		geojson.features.forEach(function(zip) {
+			zip.properties.years = filteredData[+zip.id]
+		})
+		*/
 
 		var zips = map.selectAll(".zip")
 			.data(geojson.features)
@@ -157,6 +167,8 @@ d3.json("data/bay-area-zips.geojson").then(function(geojson) {
 				.attr("d", path)
 				.attr("class", "zip")
 				.attr("fill", "#f6f6f6");
+
+		console.log(zips)
 
 		// updates colors and tooltip
 		zips

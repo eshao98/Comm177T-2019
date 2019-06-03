@@ -82,15 +82,16 @@ function update() {
 	});
 
 
-    var ymin = d3.min(transpose, function(c) { return d3.min(c.values, function(v) { return v.wage; }); });
-    var ymax = d3.max(transpose, function(c) { return d3.max(c.values, function(v) { return v.wage; }); });
+    //var ymin = d3.min(transpose, function(c) { return d3.min(c.values, function(v) { return v.wage; }); });
+    //var ymax = d3.max(transpose, function(c) { return d3.max(c.values, function(v) { return v.wage; }); });
 
 	xScale.domain([
 		d3.min(transpose, function(c) { return d3.min(c.values, function(v) { return v.year; }); }),
 		d3.max(transpose, function(c) { return d3.max(c.values, function(v) { return v.year; }); })
 	]);
 
-    yScale.domain([0.95*ymin,1.1*ymax]);
+    //yScale.domain([0.95*ymin,1.1*ymax]);
+    yScale.domain([0,140]);
 
 	var cities = linesvg.selectAll(".city")
 		.data(transpose);
@@ -153,4 +154,9 @@ function update() {
 		.style("stroke", "#3498DB");
 */
 }
+
+// d3.select("#select")
+// 	.on("input", function() {
+// 		change();
+// 	});
 
