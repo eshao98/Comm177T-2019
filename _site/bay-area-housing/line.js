@@ -1,3 +1,10 @@
+/* 
+=============================================================================
+MULTISERIES/DROPDOWN LINE PLOT
+=============================================================================
+*/
+
+// set up margin using Mike Bostock's margin convention
 
 var margin = {top: 20, right: 75, bottom: 30, left: 40},
 	width = 800 - margin.left - margin.right,
@@ -43,9 +50,16 @@ linesvg.append("g")
 d3.select("#select")
 	.on("change", change);
 
+
+// READING HW DATA FOR LINE CHART
 d3.csv("data/hw-by-city.csv").then(function(csv) {
 	hwData = csv;
 	update();
+});
+
+// READING RHNA DATA FOR BAR CHARTS
+d3.csv("data/rhna-data.csv").then(function(csv) {
+	rhnaData = csv;
 });
 
 function change() {
@@ -155,8 +169,10 @@ function update() {
 */
 }
 
-// d3.select("#select")
-// 	.on("input", function() {
-// 		change();
-// 	});
+/* 
+=============================================================================
+BAR CHART
+=============================================================================
+*/
+
 
