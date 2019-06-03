@@ -33,14 +33,14 @@ var xAxis = d3.axisBottom()
 
 var yAxis = d3.axisLeft()
 	.scale(yScale)
-	.ticks(10)
+	.ticks(5)
 	.tickFormat(formatDollar)
 	.tickSize(-width - margin.left - margin.right)
 
 linesvg.append("g")
 	.attr("class", "y axis");
 
-var select = d3.select("#select")
+d3.select("#select")
 	.on("change", change);
 
 d3.csv("data/hw-by-city.csv").then(function(csv) {
@@ -55,11 +55,16 @@ function change() {
 }
 
 function update() {
+	d3.selectAll(".city")
+	.remove();
+	//var selectedType = document.getElementById("select").value;
 
 	var nested = d3.nest()
 		.key(function(d) { return d.type; })
 		.map(hwData);
-    var series = select.property("value");
+    
+    var selectedType = document.getElementById("select").value
+    var series = selectedType;
 
     var data = nested["$"+series];
 
@@ -148,3 +153,4 @@ function update() {
 		.style("stroke", "#3498DB");
 */
 }
+

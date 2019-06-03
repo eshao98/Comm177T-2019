@@ -141,7 +141,14 @@ d3.json("data/bay-area-zips.geojson").then(function(geojson) {
 		.remove(); // clears prev year data
 
 		var selectedYear = document.getElementById("slider").value;
-		var filteredData = initialData.filter(function(d){ return d.year == selectedYear; });
+		//var filteredData = initialData.filter(function(d){ return d.year == selectedYear; });
+
+		var nested = d3.nest()
+			.key(function(d) { return d.year; })
+			.map(initialData);
+
+		var filteredData = nested['$'+selectedYear]
+
 		var zips = map.selectAll(".zip")
 			.data(geojson.features)
 			//.data(filteredData)
@@ -183,8 +190,6 @@ d3.json("data/bay-area-zips.geojson").then(function(geojson) {
 	d3.select("#slider")
 	.on("input", function() {
 		drawMap();
-
-
 	});
 
 });
