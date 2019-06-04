@@ -7,10 +7,10 @@ MULTISERIES/DROPDOWN LINE PLOT
 // set up margin using Mike Bostock's margin convention
 
 var margin = {top: 20, right: 75, bottom: 30, left: 40},
-	width = 800 - margin.left - margin.right,
-	height = 400 - margin.top - margin.bottom,
+	width = 650 - margin.left - margin.right,
+	height = 250 - margin.top - margin.bottom,
 	// set the ranges
-	xScale = d3.scaleTime().range([0, width]),
+	xScale = d3.scaleTime().range([0, width-50]),
 	yScale = d3.scaleLinear().range([height, 0]),
 	// parse year and format the dollars
 	formatYear = d3.timeFormat("%Y"),
@@ -22,7 +22,7 @@ var hwData,
 	transpose;
 
 // LINKED HOVERING
-var activeCity = 'Emeryville';
+var activeCity = 'Palo Alto';
 
 var line = d3.line()
 	.x(function(d) { return xScale(d.year); })
@@ -120,8 +120,8 @@ function update() {
 
 	citiesEnter.append("text")
 		.datum(function(d) { return {name: d.name, value: d.values[d.values.length - 1]}; })
-		.attr("x", 4)
-		.attr("dy", ".35em")
+		.attr("x", 2)
+		.attr("dy", ".25em")
 		.text(function(d) { return d.name; });
 
 	citiesEnter.on("mouseover", function(d) {

@@ -5,9 +5,9 @@ CHLOROPLETH MAP OVER TIME
 */
 
 // map viewport dimensions
-var wMap = 1500,
-	hMap = 1000,
-	scale = 48000, 
+var wMap = 900,
+	hMap = 700,
+	scale = 40000, 
 	// centered on SF (approximately)
 	latitude = 37.7347,
 	longitude = -122.24550,

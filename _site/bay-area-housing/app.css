@@ -25,7 +25,7 @@ html, body{
 
 #text {
 	margin: 0 auto;
-	width: 800px;
+	width: 650px;
 	padding: 100px 10px 10px 10px;
 }
 
@@ -48,12 +48,12 @@ html, body{
 	padding: 0px;
 	fill: #fff;
 	position: absolute;
-	left: 25%;
+	left: 20%;
 }
 
 h1 {
 	text-align: center;
-	font: 900 80px "Libre Franklin";
+	font: 900 60px "Libre Franklin";
 	letter-spacing: 0em;
 	line-height: 1em;
 	text-shadow: 2px 2px 3px black;
@@ -62,14 +62,14 @@ h1 {
 h2 {
 	text-align: center;
 	margin: 0 auto;
-	font-size: 2em;
+	font-size: 30px;
 	font-weight: 700;
 }
 
 h2.year {
 	text-align: center;
 	margin: 0 auto;
-	font-size: 1.3em;
+	font-size: 20px;
 	font-weight: 700;
 }
 
@@ -82,7 +82,7 @@ h2.source {
 
 h3 {
 	text-align: center;
-	font: 700 50px "Libre Franklin";
+	font: 700 30px "Libre Franklin";
 	letter-spacing: 0em;
 	line-height: 1em;
 	text-shadow: 2px 2px 3px black;
@@ -90,8 +90,8 @@ h3 {
 
 h4 {
 	text-align: center;
-	font: 900 30px "Martel Sans";
-	letter-spacing: 0.2em;
+	font: 900 20px "Martel Sans";
+	letter-spacing: 0.1em;
 	line-height: 1em;
 	text-shadow: 2px 2px 3px black;
 }
@@ -99,21 +99,21 @@ h4 {
 
 h5 {
 	margin: 10px 0px 0px 0px;
-	font: 400 30px "Nanum Myeongjo";
-	line-height: 35px;
+	font: 400 25px "Nanum Myeongjo";
+	line-height: 30px;
 }
 
 h5:first-letter {
 	float: left;
-	font-size: 120px;
+	font-size: 80px;
 	line-height: 1;
 	margin-right: 9px;
 }
 
 p {
 	margin: 10px 0px 0px 0px;
-	font: 400 30px "Nanum Myeongjo";
-	line-height: 35px;
+	font: 400 25px "Nanum Myeongjo";
+	line-height: 30px;
 }
 
 
@@ -172,9 +172,9 @@ svg {
 }
 
 #select {
-	margin: 0 auto;
+	margin: 5px 0px 0px 0px;
 	padding: 0px;
-	position: relative;
+	display: block;
 }
 
 .axis path,, .axis line {
@@ -219,6 +219,7 @@ path.line {
 
 .city text {
   display: none;
+  font: 600 15px "Libre Franklin";
 }
 
 .city:hover text {
