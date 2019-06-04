@@ -21,6 +21,9 @@ var hwData,
 	filtered,
 	transpose;
 
+// LINKED HOVERING
+var activeCity;
+
 var line = d3.line()
 	.x(function(d) { return xScale(d.year); })
 	.y(function(d) { return yScale(d.wage); })
@@ -55,11 +58,6 @@ d3.select("#select")
 d3.csv("data/hw-by-city.csv").then(function(csv) {
 	hwData = csv;
 	update();
-});
-
-// READING RHNA DATA FOR BAR CHARTS
-d3.csv("data/rhna-data.csv").then(function(csv) {
-	rhnaData = csv;
 });
 
 function change() {
@@ -110,8 +108,10 @@ function update() {
 	var cities = linesvg.selectAll(".city")
 		.data(transpose);
 
+	console.log(cities)
+
 	var citiesEnter = cities.enter().append("g")
-		.attr("class", "city")
+		.attr("class", "city");
 		.attr("id", function(d) { return d.name; });
 
 	citiesEnter.append("path")
@@ -124,6 +124,7 @@ function update() {
 		.attr("x", 4)
 		.attr("dy", ".35em")
 		.text(function(d) { return d.name; });
+
 
     var citiesUpdate = d3.selectAll(".city").transition(cities);
 
@@ -144,35 +145,29 @@ function update() {
 		.classed("g-baseline", function(d) { return d == 0 });
 
 /*
-	d3.select("#Annualavg .line")
+	d3.select("#one .line")
 		.style("stroke", "#2980B9")
 		.style("opacity", "1")
 		.style("stroke-width", "2px");
 
-	d3.select("#Annualavg text")
-		.text("Annual avg")
+	d3.select("#one text")
+		.text("one")
 		.style("display", "block");
 
-	d3.select("#January text")
+	d3.select("#two text")
 		.style("display", "block");
 
-	d3.select("#May text")
+	d3.select("#three text")
 		.style("display", "block");
 
-	d3.select("#January .line")
+	d3.select("#two .line")
 		.style("opacity", "1")
 		.style("stroke", "#3498DB");
 
-	d3.select("#May .line")
+	d3.select("#three .line")
 		.style("opacity", "1")
 		.style("stroke", "#3498DB");
 */
 }
-
-/* 
-=============================================================================
-BAR CHART
-=============================================================================
-*/
 
 

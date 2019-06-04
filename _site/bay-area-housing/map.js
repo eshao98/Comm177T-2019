@@ -106,21 +106,6 @@ d3.json("data/bay-area-zips.geojson").then(function(geojson) {
 				d.twohw = +d.twohw;
 				d.threehw = +d.threehw;
 				d.fourhw = +d.fourhw;
-				d.vlrhna = +d.vlrhna;
-				d.vltotal = +d.vltotal;
-				d.vlpercent = +d.vlpercent.slice(0, -1);
-				d.lowrhna = +d.lowrhna;
-				d.lowtotal = +d.lowtotal;
-				d.lowpercent = +d.lowpercent.slice(0, -1);
-				d.modrhna = +d.modrhna;
-				d.modtotal = +d.modtotal;
-				d.modpercent = +d.modpercent.slice(0, -1);
-				d.aboverhna = +d.aboverhna;
-				d.abovetotal = +d.abovetotal;
-				d.abovepercent = +d.abovepercent.slice(0, -1);
-				d.totalrhna = +d.totalrhna;
-				d.totaltotal = +d.totaltotal;
-				d.totalpercent = +d.totalpercent.slice(0, -1);
 				
 		});
 		//console.log(data)
@@ -153,11 +138,7 @@ d3.json("data/bay-area-zips.geojson").then(function(geojson) {
 			.key(function(d) { return d.year; })
 			.map(initialData);
 
-		console.log(nested)
-
 		var filteredData = nested['$'+selectedYear]
-
-		console.log(filteredData)
 
 		/*
 		geojson.features.forEach(function(zip) {
@@ -173,8 +154,6 @@ d3.json("data/bay-area-zips.geojson").then(function(geojson) {
 				.attr("d", path)
 				.attr("class", "zip")
 				.attr("fill", "#f6f6f6");
-
-		console.log(zips)
 
 		// updates colors and tooltip
 		zips
