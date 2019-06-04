@@ -23,7 +23,6 @@ var hwData,
 
 // LINKED HOVERING
 var activeCity = 'Emeryville';
-console.log(activeCity)
 
 var line = d3.line()
 	.x(function(d) { return xScale(d.year); })
@@ -116,7 +115,7 @@ function update() {
 
 	citiesEnter.append("path")
 		.attr("class", "line")
-		.style("stroke", "#aaa")
+		.style("stroke", "#eda1ab")
 		.attr("d", function(d) { return line(d.values); });
 
 	citiesEnter.append("text")
@@ -219,10 +218,6 @@ d3.csv("data/rhna-data.csv").then(function(data) {
 // BEGIN DRAWGRAPH FUNCTION
 
 var drawGraph = function(juris) {
-	// graph dimensions using Bostock's convention
-	var margin = { top: 30, right: 50, bottom: 30, left: 50 },
-		width = 550 - margin.left - margin.right,
-		height = 250 - margin.top - margin.bottom;
 
 	// x scale
 	var xScale = d3.scaleBand()
@@ -296,7 +291,7 @@ var drawGraph = function(juris) {
 		bars.enter()
 			.append("rect")
 				.attr("class", "bar")
-				.style("fill", "purple")
+				.style("fill", "#eda1ab")
 				.attr("x", function(d, i) { return xScale( rhnaFields[i] ); })
 				.attr("width", xScale.bandwidth())
 				.attr("y", function(d, i) { return yScale(d); })

@@ -5,12 +5,12 @@ CHLOROPLETH MAP OVER TIME
 */
 
 // map viewport dimensions
-var wMap = 900,
-	hMap = 700,
+var wMap = 1500,
+	hMap = 1000,
 	scale = 48000, 
 	// centered on SF (approximately)
 	latitude = 37.7347,
-	longitude = -122.2455,
+	longitude = -122.24550,
 	lowColor = "#edf8b1",
 	highColor = "#c51b8a",
 	rate = "twohw", // rate you want to test
@@ -28,7 +28,7 @@ var projection = d3.geoMercator()
 var path = d3.geoPath()
 	.projection(projection);
 
-var map = d3.select("#map")
+var map = d3.select("#content")
 	.append("svg")
 	.attr("width", wMap)
 	.attr("height", hMap);
@@ -50,8 +50,8 @@ var w = 130, h = 200;
 var key = d3.select("#map")
 	.append("svg")
 	.attr("width", w)
-	.attr("height", h)
-	.attr("class", "legend");
+	.attr("height", h);
+	//.attr("class", "legend");
 
 var legend = key.append("defs")
 	.append("svg:linearGradient")
